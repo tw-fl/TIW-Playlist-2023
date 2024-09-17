@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>PoliPlaylist</title>
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/homestyle.css" th:href="@{/css/homestyle.css}" />
+</head>
+<body>
+
+	<h1 th:text="${'PoliPlaylist Home - ' + session.user.username}"></h1>
+	<div align="right">
+		<form th:action="@{Logout}" method="post">
+		  <button type="submit">Logout</button>
+		</form><br>
+	</div><br>
+	<div align="right">
+		<form th:action="@{DeleteAccount}" method="post">
+		  <button type="submit">Delete account</button>
+		</form><br>
+	</div>
+	<div class="row">
+		<div class="column">
+			<h2>Your playlists:</h2>
+			<div th:each="p : ${playlists}">
+				<a	th:href="@{/GetPlaylist(playlistId=${p.id})}"
+					th:text="${'Playlist ' + p.name + ' - Creation date and time: ' + #temporals.format(p.creationDateTime,'dd/MM/yyyy HH:mm')}">	</a>
+			</div>
+			
+			<h2>Create Playlist</h2>
+			<form action="CreatePlaylist" method="POST">
+			Playlist name: <input type="text" name="playlistname" required> <br>
+							<select id="songIds" name="songIds" size="8" required multiple>
+									<option th:each="song : ${allSongs}" th:value="${song.id}" th:label="${song.title}"></option>
+							</select> <br>
+							<input type="submit" value="Create">
+			</form>
+			
+		</div>
+		<div class="column">
+			<h2>Upload song</h2>
+			<form action="UploadSong" method="POST" enctype="multipart/form-data">
+				Song name: <input type="text" name="songname" required> <br>
+				Album: <input type="text" name="albumname" required> <br>
+				Artist: <input type="text" name="artistname" required> <br>
+				Year: <input type="number" name="year" required> <br>
+				Genre: <select id="genre" name="genre" size="4" required>
+							<option value="Rock">Rock</option>
+							<option value="Rap">Rap</option>
+							<option value="Hip Hop">Hip Hop</option>
+							<option value="Jazz">Jazz</option>
+							<option value="Country">Country</option>
+							<option value="Blues">Blues</option>
+							<option value="Metal">Metal</option>
+							<option value="Soul">Soul</option>
+							<option value="Punk">Punk</option>
+							<option value="Reggae">Reggae</option>
+							<option value="Funk">Funk</option>
+							<option value="Electronic">Electronic</option>
+							<option value="Pop">Pop</option>
+						</select> <br>
+				Album Cover: <input type="file" name="albumcover" accept="image/png, image/jpeg, image/jpg" required> <br>
+				Audio file: <input type="file" name="audiofile" accept="audio/mp3" required> <br>
+						<input type="submit" value="Upload">
+			</form>
+			
+			<a th:href="@{/AllSongs}"><h2>All Songs</h2></a>
+		</div>
+	</div>
+
+</body>
+</html>

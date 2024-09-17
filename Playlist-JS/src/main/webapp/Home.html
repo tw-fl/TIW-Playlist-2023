@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>PoliPlaylist</title>
+	<link rel="stylesheet" type="text/css" media="all" href="css/homestyle.css" />
+	<script src="utils.js" charset="utf-8" defer></script>
+	<script src="home.js" charset="utf-8" defer></script>
+</head>
+<body>
+	
+	<div id="songpage">
+		
+		<div align="right">
+			<form id="closesongpage">
+				<button type="submit">Close</button>
+			</form>
+		</div>
+		
+		<table>
+			<tr>
+				<th>
+					<h2 id="songtitle"></h2>
+					<h3 id="songgenre"></h3>
+					<h3 id="songalbum"></h3>
+					<h3 id="songartist"></h3>
+					<h3 id="songyear"></h3>
+				</th>
+				<th>
+					<h2>Player</h2>
+					<img id="songalbumcover" width="100"/>
+					<audio controls controlsList="nodownload"
+			        	id="songaudio">
+	   				</audio>
+				</th>
+			</tr>
+		</table>
+	</div>
+	
+	<hr id="line2">
+	
+	<div id="playlistpage">
+	
+		<h1 id="playlistpagetitle"></h1>
+		
+		<div align="right">
+			<form id="closeplaylist">
+				<button type="submit">Close</button>
+			</form>
+		</div>
+		
+		<h2 id="pagenumber"></h2>
+		<h2 id="emptyplaylist">Empty playlist</h2>
+		
+		<button type="button" id="nextpagebutton">Next page</button>
+		
+		<table>
+			<tr id="songstable">
+				
+			</tr>
+		</table>
+		
+		<button type="button" id="previouspagebutton">Previous page</button>
+		
+		<h2>Add a song</h2>
+		<form id="addsongtoplaylistform">
+						<input type="hidden" id="hiddenplaylistid" name="playlistId">
+			Choose song: <select id="addsongtoplaylistformselect" name="songIds" size="4" multiple required>
+								
+						</select> <br>
+						<input type="submit" value="Add">
+		</form>
+		
+		<form id="deleteplaylistform">
+			<input type="hidden" id="playlistId" name="playlistId">
+			<button type="submit" id="deleteplaylistbutton">Delete playlist</button>
+		</form><br>
+	</div>
+	
+	<div id="playlistordinator">
+	
+		<div align="right">
+			<form id="closeplaylistordinatorform">
+				<button type="submit">Close</button>
+			</form><br>
+			<form id="submitplaylistordinatorform">
+				<button type="submit">Submit order</button>
+			</form>
+		</div>
+	
+		<table id="playlistordinatortable">
+			
+		</table>
+	</div>
+	
+	<hr id="line1">
+	
+	<h1 id="hometext"></h1>
+	<div align="right">
+				<form action="#" id="logoutbutton">
+				  <button type="submit">Logout</button>
+				</form><br>
+			</div>
+			<div align="right">
+				<form action="#" id="deleteaccountbutton">
+				  <button type="submit">Delete account</button>
+				</form>
+			</div>
+	
+	<div class="row">
+		<div class="column">
+			<h2>Your playlists:</h2>
+			<div id="playlistlist">
+				
+			</div>
+			
+			<div id="playlist">
+			
+			</div>
+			
+			<h2>Create Playlist</h2>
+			<form id="createplaylistform">
+			Playlist name: <input id="chooseplaylistname" type="text" name="playlistname" required> <br>
+							<select id="createplaylistformselect" name="songIds" size="8" required multiple>
+									
+							</select> <br>
+							<input type="submit" value="Create">
+			</form>
+			
+		</div>
+		<div class="column">
+			<h2>Upload song</h2>
+			<form id="uploadsongform" enctype="multipart/form-data">
+				Song name: <input type="text" name="songname" required> <br>
+				Album: <input type="text" name="albumname" required> <br>
+				Artist: <input type="text" name="artistname" required> <br>
+				Year: <input type="number" name="year" required> <br>
+				Genre: <select id="genre" name="genre" size="4" required>
+							<option value="Rock">Rock</option>
+							<option value="Rap">Rap</option>
+							<option value="Hip Hop">Hip Hop</option>
+							<option value="Jazz">Jazz</option>
+							<option value="Country">Country</option>
+							<option value="Blues">Blues</option>
+							<option value="Metal">Metal</option>
+							<option value="Soul">Soul</option>
+							<option value="Punk">Punk</option>
+							<option value="Reggae">Reggae</option>
+							<option value="Funk">Funk</option>
+							<option value="Electronic">Electronic</option>
+							<option value="Pop">Pop</option>
+						</select> <br>
+				Album Cover: <input type="file" name="albumcover" accept="image/png, image/jpeg, image/jpg" required> <br>
+				Audio file: <input type="file" name="audiofile" accept="audio/mp3" required> <br>
+						<input type="submit" value="Upload">
+			</form>
+			
+			<a id="allsongslink" href="#"><h2>All songs</h2></a>
+		</div>
+	</div>	
+	
+	<hr id="line3">
+	
+	<div id="allsongspage">
+		<div align="right">
+			<form id="closeallsongs">
+					<button type="submit">Close</button>
+			</form>
+		</div>
+		
+	
+		<table id="allsongstable">
+		</table>
+	</div>
+
+</body>
+</html>

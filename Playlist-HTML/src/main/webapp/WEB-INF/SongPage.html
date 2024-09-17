@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>PoliPlaylist</title>
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/songstyle.css" th:href="@{/css/songstyle.css}" />
+</head>
+<body>
+	<h1 th:text="${'Playlist: ' + playlistName + ' - Song page'}"></h1>
+	<div align="right">
+		<form th:action="@{GetPlaylist}" method="get">
+			<input type="hidden" name="playlistId" th:value="${playlistId}">
+			<button type="submit">Back to playlist</button>
+		</form><br>
+	</div>
+	<table>
+		<tr>
+			<th>
+				<h2 th:text="${'Song name: ' + song.title}"></h2>
+				<h3 th:text="${'Genre: ' + song.genre}"></h3>
+				<h3 th:text="${'Album: ' + song.album}"></h3>
+				<h3 th:text="${'Artist: ' + song.artist}"></h3>
+				<h3 th:text="${'Year: ' + song.year}"></h3>
+			</th>
+			<th>
+				<h2>Player</h2>
+				<img th:src="@{'data:image/png;base64,' + ${song.encodedAlbumCover}}" width="100"/>
+				<audio controls controlsList="nodownload"
+		        	th:src="@{'data:audio/mp3;base64,' + ${song.encodedSong}}">
+   				</audio>
+			</th>
+		</tr>
+	</table>
+
+</body>
+</html>
